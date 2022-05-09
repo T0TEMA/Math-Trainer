@@ -13,7 +13,6 @@ def multiply():
         question = []
         x = random.randint(0, 10)
         y = random.randint(0, 10)
-        cx = random.randint(0, 3)
         res = x * y
         question.append(f"{x}.{y}")
         question.append(res)
@@ -26,6 +25,6 @@ def multiply():
             question.append(answer)
         questions.append(question)
         timer = time.time() - init_time
-        print(f"{search_time-timer:.0f}s left.\n")
+        print(f"{search_time-timer:.1f}s left.\n")
     print(f"v = {correct} | x = {bad}")
-    return questions
+    return questions, (correct+bad, correct, bad)
