@@ -15,7 +15,7 @@ class ProfileMenu(QFrame):
         # Back to main menu :
         back_button = QPushButton(self)
         back_button.setText("<")
-        back_button.setGeometry(10, 10, 40, 40)
+        back_button.setGeometry(20, 20, 60, 60)
         back_button.setStyleSheet(open("gui/button.css").read())
         back_button.clicked.connect(self.app.launchMainMenu)
         # Title label:
