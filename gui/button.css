@@ -1,0 +1,13 @@
+QPushButton {
+    color: black;
+    background-color: darkgrey;
+    font-family: "Lucida Handwriting", serif;
+    font-size: 26px;
+    border-radius: 12px;
+}
+
+QPushButton:hover {
+    color: black;
+    background-color: grey;
+    border: 2px solid #303030;
+}
