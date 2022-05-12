@@ -18,7 +18,7 @@ class GameMenu(QFrame):
         # Game values :
         self.correct = 0
         self.bad = 0
-        self.time_left = 5
+        self.time_left = 30
         self.question_res = None
         self.question_number = 0
         self.question = ""
@@ -127,20 +127,21 @@ class GameMenu(QFrame):
             self.time_left_label.setText(str(self.time_left) + 's')
             return
         self.timer.stop()
-        self.app.launchRecapMenu((self.question_number, self.correct, self.bad))
+        self.time_left = 30
+        self.app.launchRecapMenu((self.question_number-1, self.correct, self.bad))
 
     def make_question(self):
         x = random.randint(0, 10)
         y = random.randint(0, 10)
-        self.question = f"{x}.{y}"
         self.question_res = x*y
+        self.question = f"{x}x{y}"
         self.question_label.setText(str(self.question))
         self.question_number += 1
         self.question_number_label.setText(str(self.question_number))
 
     def answer(self, value):
-        if value == self.question_res:
+        if int(value) == int(self.question_res):
             self.correct += 1
-        elif value != self.question_res:
+        elif int(value) != int(self.question_res):
             self.bad += 1
         self.make_question()

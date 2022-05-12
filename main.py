@@ -6,7 +6,7 @@ from gui.main_menu import MainMenu
 from gui.game_menu import GameMenu
 from gui.settings_menu import SettingsMenu
 from gui.profile_menu import ProfileMenu
-from gui.recap_menu import RecapMenu
+from gui.results_menu import RecapMenu
 
 
 class Application(QMainWindow):
