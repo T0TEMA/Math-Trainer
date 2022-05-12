@@ -18,7 +18,7 @@ class GameMenu(QFrame):
         # Game values :
         self.correct = 0
         self.bad = 0
-        self.time_left = 5
+        self.time_left = 30
         self.question_res = None
         self.question_number = 0
         self.question = ""
@@ -74,6 +74,8 @@ class GameMenu(QFrame):
                         button.setShortcut("_")
                     elif n == 8:
                         button.setShortcut("ç")
+                    elif n == 10:
+                        button.setShortcut("à")
                 elif n == 9:
                     button.clicked.connect(partial(self.input_backspace))
                     button.setShortcut(Qt.Key_Backspace)

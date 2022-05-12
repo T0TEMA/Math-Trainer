@@ -24,8 +24,8 @@ class MainMenu(QFrame):
         title_label.setStyleSheet('font-family: Lucida Handwriting; font-size: 52px; color: lightgrey;')
         # Rights label:
         rights_label = QLabel(self)
-        rights_label.setText("Totema 2022")
-        rights_label.setGeometry(10, 430, 75, 10)
+        rights_label.setText("Totema's projects (2022)")
+        rights_label.setGeometry(10, 430, 120, 15)
         rights_label.setStyleSheet('color: grey;')
         # Play button :
         play_button = QPushButton(self)

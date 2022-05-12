@@ -16,31 +16,34 @@ class Application(QMainWindow):
         self.setWindowTitle("Math Trainer")
         self.setFixedSize(800, 450)
         self.setStyleSheet("background-color: #303030;")
-        # Stacking menus :
+        # Stacking menus (that never has to reset) :
         self.stacked = QStackedWidget(self)
         self.stacked.insertWidget(0, MainMenu(self))
-        self.stacked.insertWidget(1, GameMenu(self))
-        self.stacked.insertWidget(2, SettingsMenu(self))
-        self.stacked.insertWidget(3, ProfileMenu(self))
-        self.stacked.insertWidget(4, RecapMenu(self, game_data))
+        self.stacked.insertWidget(1, SettingsMenu(self))
+        self.stacked.insertWidget(2, ProfileMenu(self))
         self.stacked.setCurrentIndex(0)
         self.setCentralWidget(self.stacked)
 
     def launchMainMenu(self):
         self.stacked.setCurrentIndex(0)
 
-    def launchGameMenu(self):
+    def launchSettingsMenu(self):
         self.stacked.setCurrentIndex(1)
 
-    def launchSettingsMenu(self):
+    def launchProfileMenu(self):
         self.stacked.setCurrentIndex(2)
 
-    def launchProfileMenu(self):
+    def launchGameMenu(self):
+        """
+        Reinstancing the game menu to relaunch a new game.
+        ! Instead of relaunching all the item (even the GUI) could make a game class
+        which would be the the only one to reload.
+        """
+        self.stacked.insertWidget(3, GameMenu(self))
         self.stacked.setCurrentIndex(3)
 
     def launchRecapMenu(self, game_data):
-        # destroy index 4
-        # recreate index 4
+        self.stacked.insertWidget(4, RecapMenu(self, game_data))
         self.stacked.setCurrentIndex(4)
 
 
