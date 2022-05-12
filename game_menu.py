@@ -113,6 +113,8 @@ class GameMenu(QFrame):
         self.input_label.setText(self.input_label_value)
 
     def input_enter(self):
+        if self.input_label_value == '':
+            return
         self.answer(self.input_label_value)
         self.input_label_value = ""
         self.input_label.setText(self.input_label_value)

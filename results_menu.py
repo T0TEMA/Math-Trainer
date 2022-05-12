@@ -1,10 +1,6 @@
 # Standard libraries :
-import sys
-from functools import partial
 # Downloaded libraries :
 from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
-from PyQt5.QtCore import QRect, Qt, QTimer
-from PyQt5.QtGui import QCursor
 # Other programmed files :
 
 

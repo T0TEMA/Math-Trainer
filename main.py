@@ -1,12 +1,12 @@
 # Standard libraries :
 # Downloaded libraries :
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
 # Other programmed files :
-from gui.main_menu import MainMenu
-from gui.game_menu import GameMenu
-from gui.settings_menu import SettingsMenu
-from gui.profile_menu import ProfileMenu
-from gui.results_menu import RecapMenu
+from main_menu import MainMenu
+from game_menu import GameMenu
+from settings_menu import SettingsMenu
+from profile_menu import ProfileMenu
+from results_menu import RecapMenu
 
 
 class Application(QMainWindow):
