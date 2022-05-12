@@ -18,7 +18,7 @@ class GameMenu(QFrame):
         # Game values :
         self.correct = 0
         self.bad = 0
-        self.time_left = 30
+        self.time_left = 5
         self.question_res = None
         self.question_number = 0
         self.question = ""
@@ -127,7 +127,6 @@ class GameMenu(QFrame):
             self.time_left_label.setText(str(self.time_left) + 's')
             return
         self.timer.stop()
-        self.time_left = 30
         self.app.launchRecapMenu((self.question_number-1, self.correct, self.bad))
 
     def make_question(self):

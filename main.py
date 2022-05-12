@@ -22,6 +22,7 @@ class Application(QMainWindow):
         self.stacked.insertWidget(1, GameMenu(self))
         self.stacked.insertWidget(2, SettingsMenu(self))
         self.stacked.insertWidget(3, ProfileMenu(self))
+        self.stacked.insertWidget(4, RecapMenu(self, game_data))
         self.stacked.setCurrentIndex(0)
         self.setCentralWidget(self.stacked)
 
@@ -38,7 +39,8 @@ class Application(QMainWindow):
         self.stacked.setCurrentIndex(3)
 
     def launchRecapMenu(self, game_data):
-        self.stacked.insertWidget(4, RecapMenu(self, game_data))
+        # destroy index 4
+        # recreate index 4
         self.stacked.setCurrentIndex(4)
 
 
