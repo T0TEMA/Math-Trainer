@@ -137,7 +137,7 @@ class GameMenu(QFrame):
         x = random.randint(0, 10)
         y = random.randint(0, 10)
         self.question_res = x*y
-        self.question = f"{x}x{y}"
+        self.question = f"{x}×{y}"
         self.question_label.setText(str(self.question))
         self.question_number += 1
         self.question_number_label.setText(str(self.question_number))
