@@ -1,71 +1,58 @@
-/* main.py */
+/* Default values */
 QMainWindow {
     background-color: #303030;
 }
-/* main_menu.py | game_menu.py | profile_menu.py |results_menu.py |settings_menu.py */
+
 QPushButton {
     color: black;
     background-color: darkgrey;
     font-family: "Lucida Handwriting", serif;
-    font-size: 26px;
     border-radius: 12px;
 }
-
 QPushButton:hover {
     color: black;
     background-color: grey;
     border: 2px solid #303030;
 }
+
 QLabel {
     font-family: "Lucida Handwriting", serif;
-    border-radius: 12px;
-    font-size: 34px;
     color: black;
+    border-radius: 34px;
 }
+
+QComboBox {
+    background-color: darkgrey;
+    font-family: "Lucida Handwriting", serif;
+    border-style: none;
+}
+
 QFrame {
-    border-radius: 12px;
 }
 /* main_menu.py | profile_menu.py | settings_menu.py | results_menu.py */
 QLabel#title_label {
     color: lightgrey;
-    font-size: 52px;
 }
+/* main_menu.py */
 QLabel#rights_label {
     font-family: Arial, serif;
     color: grey;
-    font-size: 12px;
 }
 /* settings_menu.py */
-QComboBox {
+QLabel#setting_frames {
     background-color: darkgrey;
-    font-family: "Lucida Handwriting", serif;
-    font-size: 26px;
     border-radius: 12px;
-}
-QFrame#result_frame {
-    background-color: darkgrey;
 }
 /* game_menu.py */
 QPushButton#start_game_button {
     background-color: transparent;
     font-family: "Lucida Handwriting", serif;
-    font-size: 100px;
 }
-QFrame#numpad_frame {
-    background-color: lightgrey;
-    font-size: 56px
-}
-QLabel#question_number_label {
+
+QLabel#game_labels {
     background-color: lightgrey;
 }
-QLabel#time_left_label {
-    background-color: lightgrey;
-}
-QLabel#question_label {
-    background-color: lightgrey;
-    font-size: 100px;
-}
-QLabel#input_label {
-    background-color: lightgrey;
-    font-size: 62px;
+/* result_menu.py */
+QFrame#result_frame {
+    background-color: darkgrey;
 }

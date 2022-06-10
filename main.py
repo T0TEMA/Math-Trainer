@@ -4,7 +4,7 @@ Author : Totema
 # Standard libraries :
 import sys
 # Downloaded libraries :
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QStyleFactory
 from PyQt5.QtGui import QIcon
 # Other programmed files :
 from main_menu import MainMenu
@@ -13,7 +13,6 @@ from settings_menu import SettingsMenu
 from data.manage_file import Settings
 from profile_menu import ProfileMenu
 from results_menu import RecapMenu
-from game import Game
 
 
 class Application(QMainWindow):
@@ -22,6 +21,8 @@ class Application(QMainWindow):
         # Setup window properties :
         self.setWindowTitle("Math Trainer")
         self.setWindowIcon(QIcon("icon.png"))
+        self.w = None  # Window width
+        self.h = None  # Window height
         # Setup settings :
         self.settings = Settings()
         self.css = open(f"gui/{self.settings.content['theme']}.css").read()
@@ -37,6 +38,8 @@ class Application(QMainWindow):
     def load_settings(self):
         resolution = self.settings.content['resolution'].split('x')
         self.setFixedSize(int(resolution[0]), int(resolution[1]))
+        self.w = self.width()
+        self.h = self.height()
         self.setStyleSheet(self.css)
 
     def reload_window_items(self):
@@ -74,6 +77,8 @@ class Application(QMainWindow):
 
 if '__main__' == __name__:
     application = QApplication([])
+    #print(QStyleFactory.keys())
+    #application.setStyle('Windows')
     game_app = Application()
     game_app.show()
     sys.exit(application.exec_())

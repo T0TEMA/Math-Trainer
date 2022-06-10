@@ -87,23 +87,23 @@ class GameMenu(QFrame):
         # Question number label:
         self.question_number_label.setGeometry(350, 10, 215, 40)
         self.question_number_label.setAlignment(Qt.AlignCenter)
-        self.question_number_label.setObjectName("question_number_label")
+        self.question_number_label.setObjectName("game_labels")
         self.question_number_label.setStyleSheet(self.app.css)
         # Time left label:
         self.time_left_label.setGeometry(575, 10, 215, 40)
         self.time_left_label.setAlignment(Qt.AlignCenter)
-        self.time_left_label.setObjectName("time_left_label")
+        self.time_left_label.setObjectName("game_labels")
         self.time_left_label.setStyleSheet(self.app.css)
         # Question label :
         self.question_label.setGeometry(350, 60, 440, 270)
         self.question_label.setAlignment(Qt.AlignCenter)
-        self.question_label.setObjectName("question_label")
+        self.question_label.setObjectName("game_labels")
         self.question_label.setStyleSheet(self.app.css)
         # Input label :
         self.input_label.setText(self.input_label_value)
         self.input_label.setGeometry(350, 340, 440, 100)
         self.input_label.setAlignment(Qt.AlignCenter)
-        self.input_label.setObjectName("input_label")
+        self.input_label.setObjectName("game_labels")
         self.input_label.setStyleSheet(self.app.css)
 
     def input_number(self, number):
