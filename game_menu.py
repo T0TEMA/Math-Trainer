@@ -2,6 +2,7 @@
 from functools import partial
 import random
 # Downloaded libraries :
+import PyQt5
 from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
 from PyQt5.QtCore import QRect, Qt, QTimer
 from PyQt5.QtGui import QCursor
@@ -11,7 +12,7 @@ from PyQt5.QtGui import QCursor
 class GameMenu(QFrame):
     def __init__(self, app):
         super().__init__()
-        self.app = app
+        self.app: PyQt5.QtWidgets.QMainWindow = app
         # Input label :
         self.input_label = QLabel(self)
         self.input_label_value = ""
@@ -28,13 +29,13 @@ class GameMenu(QFrame):
         self.question_label = QLabel(str(self.question), self)
         # Launching frame items :
         self.init_frame_items()
-        # Start game button :
+        # Start game default.css :
         self.start_game_button = QPushButton(self)
         self.start_game_button.setText("Ready ?")
         self.start_game_button.setGeometry(0, 0, 800, 450)
         self.start_game_button.setCursor(QCursor(Qt.PointingHandCursor))
-        self.start_game_button.setStyleSheet("background-color: none; font-family: Lucida Handwriting;"
-                                             "font-size: 100px")
+        self.start_game_button.setObjectName("start_game_button")
+        self.start_game_button.setStyleSheet(self.app.css)
         self.start_game_button.clicked.connect(self.start_game)
         # Timer
         self.timer = QTimer()
@@ -43,14 +44,15 @@ class GameMenu(QFrame):
         # Numpad frame :
         numpad_frame = QFrame(self)
         numpad_frame.setGeometry(QRect(10, 10, 330, 432))
-        numpad_frame.setStyleSheet("background-color: lightgrey; border-radius: 12px; font-size: 56px")
+        numpad_frame.setObjectName("numpad_frame")
+        numpad_frame.setStyleSheet(self.app.css)
         # Numpad buttons :
         numpad_values = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '<', '0', 'V')
         for i in range(4):
             for j in range(3):
                 n = i*3+j
                 button = QPushButton(numpad_frame)
-                button.setStyleSheet(open("gui/button.css").read())
+                button.setStyleSheet(self.app.css)
                 button.setText(numpad_values[n])
                 button.setGeometry((j*105)+10, (i*105)+10, 100, 100)
                 button.setShortcut(numpad_values[n])
@@ -85,24 +87,24 @@ class GameMenu(QFrame):
         # Question number label:
         self.question_number_label.setGeometry(350, 10, 215, 40)
         self.question_number_label.setAlignment(Qt.AlignCenter)
-        self.question_number_label.setStyleSheet("background-color: lightgrey; border-radius: 12px;"
-                                                 "font-family: Lucida Handwriting; font-size: 34px")
+        self.question_number_label.setObjectName("question_number_label")
+        self.question_number_label.setStyleSheet(self.app.css)
         # Time left label:
         self.time_left_label.setGeometry(575, 10, 215, 40)
         self.time_left_label.setAlignment(Qt.AlignCenter)
-        self.time_left_label.setStyleSheet("background-color: lightgrey; border-radius: 12px;"
-                                           "font-family: Lucida Handwriting; font-size: 34px")
+        self.time_left_label.setObjectName("time_left_label")
+        self.time_left_label.setStyleSheet(self.app.css)
         # Question label :
         self.question_label.setGeometry(350, 60, 440, 270)
         self.question_label.setAlignment(Qt.AlignCenter)
-        self.question_label.setStyleSheet("background-color: lightgrey; border-radius: 12px;"
-                                          "font-family: Lucida Handwriting; font-size: 100px")
+        self.question_label.setObjectName("question_label")
+        self.question_label.setStyleSheet(self.app.css)
         # Input label :
         self.input_label.setText(self.input_label_value)
         self.input_label.setGeometry(350, 340, 440, 100)
         self.input_label.setAlignment(Qt.AlignCenter)
-        self.input_label.setStyleSheet("background-color: lightgrey; border-radius: 12px;"
-                                       "font-family: Lucida Handwriting; font-size: 62px")
+        self.input_label.setObjectName("input_label")
+        self.input_label.setStyleSheet(self.app.css)
 
     def input_number(self, number):
         self.input_label_value += str(number)

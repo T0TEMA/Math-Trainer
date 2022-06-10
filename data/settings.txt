@@ -1,0 +1,4 @@
+{
+"resolution": "800x450",
+"theme": "default",
+}

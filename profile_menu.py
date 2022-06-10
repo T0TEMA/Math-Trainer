@@ -1,5 +1,6 @@
 # Standard libraries :
 # Downloaded libraries :
+import PyQt5
 from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
 # Other programmed files :
 
@@ -7,7 +8,7 @@ from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
 class ProfileMenu(QFrame):
     def __init__(self, app):
         super().__init__()
-        self.app = app
+        self.app: PyQt5.QtWidgets.QMainWindow = app
         # Launch frame items :
         self.init_frame_items()
 
@@ -16,10 +17,11 @@ class ProfileMenu(QFrame):
         back_button = QPushButton(self)
         back_button.setText("<")
         back_button.setGeometry(20, 20, 60, 60)
-        back_button.setStyleSheet(open("gui/button.css").read())
+        back_button.setStyleSheet(self.app.css)
         back_button.clicked.connect(self.app.launchMainMenu)
         # Title label:
         title_label = QLabel(self)
         title_label.setText("Profile")
         title_label.setGeometry(290, 0, 405, 100)
-        title_label.setStyleSheet('font-family: Lucida Handwriting; font-size: 52px; color: lightgrey;')
+        title_label.setObjectName("title_label")
+        title_label.setStyleSheet(self.app.css)
