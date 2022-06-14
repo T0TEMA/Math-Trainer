@@ -23,9 +23,10 @@ class Application(QMainWindow):
         self.setWindowIcon(QIcon("icon.png"))
         self.w = None  # Window width
         self.h = None  # Window height
+        self.tc = None  # Text coefficient (changes the font size depending on window size)
+        self.css = None
         # Setup settings :
         self.settings = Settings()
-        self.css = open(f"gui/{self.settings.content['theme']}.css").read()
         self.load_settings()
         # Stacking menus (that never has to reset (except at settings reload) :
         self.stacked = QStackedWidget(self)
@@ -36,8 +37,18 @@ class Application(QMainWindow):
         self.setCentralWidget(self.stacked)
 
     def load_settings(self):
-        resolution = self.settings.content['resolution'].split('x')
-        self.setFixedSize(int(resolution[0]), int(resolution[1]))
+        """
+        Loading all the settings at starting of program, also when changing settings.
+        """
+        theme = self.settings.content['theme']
+        self.css = open(f"gui/{theme[0].lower()}{theme[1:]}.css").read()
+        screen = self.settings.content['screen']
+        if screen == "Fullscreen":
+            size = self.screen().size()
+            self.setGeometry(0, 0, size.width(), size.height())
+        elif screen == "Windowed":
+            resolution = self.settings.content['resolution'].split('x')
+            self.setGeometry(0, 34, int(resolution[0]), int(resolution[1]))
         self.w = self.width()
         self.h = self.height()
         self.setStyleSheet(self.css)
@@ -49,7 +60,6 @@ class Application(QMainWindow):
         """
         # Reloading settings :
         self.settings = Settings()
-        self.css = open(f"gui/{self.settings.content['theme']}.css").read()
         self.load_settings()
         # Re-stacking menus :
         self.stacked.insertWidget(0, MainMenu(self))
@@ -78,7 +88,7 @@ class Application(QMainWindow):
 if '__main__' == __name__:
     application = QApplication([])
     #print(QStyleFactory.keys())
-    #application.setStyle('Windows')
+    #application.setStyle('Fusion')
     game_app = Application()
     game_app.show()
     sys.exit(application.exec_())

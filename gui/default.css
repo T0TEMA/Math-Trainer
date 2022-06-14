@@ -1,6 +1,6 @@
 /* Default values */
 QMainWindow {
-    background-color: #303030;
+    background-color: lightgrey;
 }
 
 QPushButton {
@@ -11,32 +11,23 @@ QPushButton {
 }
 QPushButton:hover {
     color: black;
-    background-color: grey;
-    border: 2px solid #303030;
+    border: 3px solid lightgrey;
 }
 
 QLabel {
-    font-family: "Lucida Handwriting", serif;
     color: black;
-    border-radius: 34px;
+    font-family: "Lucida Handwriting", serif;
 }
 
 QComboBox {
+    color: black;
     background-color: darkgrey;
     font-family: "Lucida Handwriting", serif;
     border-style: none;
 }
-
-QFrame {
-}
-/* main_menu.py | profile_menu.py | settings_menu.py | results_menu.py */
-QLabel#title_label {
-    color: lightgrey;
-}
 /* main_menu.py */
 QLabel#rights_label {
     font-family: Arial, serif;
-    color: grey;
 }
 /* settings_menu.py */
 QLabel#setting_frames {
@@ -44,15 +35,16 @@ QLabel#setting_frames {
     border-radius: 12px;
 }
 /* game_menu.py */
-QPushButton#start_game_button {
-    background-color: transparent;
-    font-family: "Lucida Handwriting", serif;
+
+QPushButton#start_button:hover {
+    border: 10px solid green;
+}
+QLabel#game_labels {
+    background-color: darkgrey;
+    border-radius: 12px;
+}
+QFrame#game_frames {
+    background-color: grey;
+    border-radius: 12px;
 }
 
-QLabel#game_labels {
-    background-color: lightgrey;
-}
-/* result_menu.py */
-QFrame#result_frame {
-    background-color: darkgrey;
-}

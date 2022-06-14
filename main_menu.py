@@ -1,3 +1,7 @@
+"""
+"Set Object Name" is used in the '.css' file to assign a part of the styling sheet to a given item
+in the window.
+"""
 # Standard libraries :
 # Downloaded libraries :
 import PyQt5
@@ -23,7 +27,7 @@ class MainMenu(QFrame):
         title_label.setText("Math Trainer")
         title_label.setAlignment(Qt.AlignCenter)
         title_label.setGeometry(0, 20, w, 120)
-        title_label.setObjectName("title_label") # ObjectName is used in CSS file
+        title_label.setObjectName("title_label")
         title_label.setFont(QFont("", 50))
         title_label.setStyleSheet(self.app.css)
         # Rights label:

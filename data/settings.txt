@@ -1,4 +1,5 @@
 {
-"resolution": "800x450",
-"theme": "default",
+"resolution": "2560x1440",
+"screen": "Fullscreen",
+"theme": "Default",
 }
