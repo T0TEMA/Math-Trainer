@@ -7,10 +7,11 @@ from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
 from PyQt5.QtCore import QRect, Qt, QTimer
 from PyQt5.QtGui import QCursor, QFont
 # Other programmed files :
+from game import Game
 
 
 class GameMenu(QFrame):
-    def __init__(self, app):
+    def __init__(self, app, game):
         super().__init__()
         self.app: PyQt5.QtWidgets.QMainWindow = app
 
@@ -20,6 +21,7 @@ class GameMenu(QFrame):
         self.input_label = QLabel(self.right_frame)
         self.input_label_value = ""
         # Game values :
+        self.game = game
         self.correct = 0
         self.bad = 0
         self.time_left = 30

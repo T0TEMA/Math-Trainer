@@ -13,6 +13,7 @@ from settings_menu import SettingsMenu
 from data.manage_file import Settings
 from profile_menu import ProfileMenu
 from results_menu import RecapMenu
+from selection_menu import SelectionMenu
 
 
 class Application(QMainWindow):
@@ -21,9 +22,9 @@ class Application(QMainWindow):
         # Setup window properties :
         self.setWindowTitle("Math Trainer")
         self.setWindowIcon(QIcon("icon.png"))
-        self.w = None  # Window width
-        self.h = None  # Window height
-        self.tc = None  # Text coefficient (changes the font size depending on window size)
+        self.showFullScreen()
+        self.w = self.width()
+        self.h = self.height()
         self.css = None
         # Setup settings :
         self.settings = Settings()
@@ -32,7 +33,7 @@ class Application(QMainWindow):
         self.stacked = QStackedWidget(self)
         self.stacked.insertWidget(0, MainMenu(self))
         self.stacked.insertWidget(1, SettingsMenu(self))
-        self.stacked.insertWidget(2, ProfileMenu(self))
+        self.stacked.insertWidget(3, SelectionMenu(self))
         self.stacked.setCurrentIndex(0)
         self.setCentralWidget(self.stacked)
 
@@ -41,16 +42,7 @@ class Application(QMainWindow):
         Loading all the settings at starting of program, also when changing settings.
         """
         theme = self.settings.content['theme']
-        self.css = open(f"gui/{theme[0].lower()}{theme[1:]}.css").read()
-        screen = self.settings.content['screen']
-        if screen == "Fullscreen":
-            size = self.screen().size()
-            self.setGeometry(0, 0, size.width(), size.height())
-        elif screen == "Windowed":
-            resolution = self.settings.content['resolution'].split('x')
-            self.setGeometry(0, 34, int(resolution[0]), int(resolution[1]))
-        self.w = self.width()
-        self.h = self.height()
+        self.css = open(f"themes/{theme[0].lower()}{theme[1:]}.css").read()
         self.setStyleSheet(self.css)
 
     def reload_window_items(self):
@@ -64,7 +56,7 @@ class Application(QMainWindow):
         # Re-stacking menus :
         self.stacked.insertWidget(0, MainMenu(self))
         self.stacked.insertWidget(1, SettingsMenu(self))
-        self.stacked.insertWidget(2, ProfileMenu(self))
+        self.stacked.insertWidget(2, SelectionMenu(self))
         self.stacked.setCurrentIndex(1)
 
     def launchMainMenu(self):
@@ -74,15 +66,19 @@ class Application(QMainWindow):
         self.stacked.setCurrentIndex(1)
 
     def launchProfileMenu(self):
-        self.stacked.setCurrentIndex(2)
-
-    def launchGameMenu(self):
-        self.stacked.insertWidget(3, GameMenu(self))
+        self.stacked.insertWidget(3, ProfileMenu(self))
         self.stacked.setCurrentIndex(3)
 
-    def launchRecapMenu(self, game_data):
-        self.stacked.insertWidget(4, RecapMenu(self, game_data))
+    def launchSelectionMenu(self):
+        self.stacked.setCurrentIndex(2)
+
+    def launchGameMenu(self, game):
+        self.stacked.insertWidget(4, GameMenu(self, game))
         self.stacked.setCurrentIndex(4)
+
+    def launchRecapMenu(self, game_data):
+        self.stacked.insertWidget(5, RecapMenu(self, game_data))
+        self.stacked.setCurrentIndex(5)
 
 
 if '__main__' == __name__:

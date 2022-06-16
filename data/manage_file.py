@@ -49,7 +49,7 @@ class UserData:
     Class containing all the used user data for the user profile.
     """
     def __init__(self):
-        self.path = "data/userdata.txt.txt"
+        self.path = "data/userdata.txt"
         self.content = read_file(self.path)
 
     def save(self):

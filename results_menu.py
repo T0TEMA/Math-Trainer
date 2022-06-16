@@ -3,6 +3,7 @@
 import PyQt5
 from PyQt5.QtWidgets import QFrame, QPushButton, QLabel
 # Other programmed files :
+from data.manage_file import UserData
 
 
 class RecapMenu(QFrame):
@@ -10,6 +11,13 @@ class RecapMenu(QFrame):
         super().__init__()
         self.app: PyQt5.QtWidgets.QMainWindow = app
         self.data = game_data
+        # Save game data in 'userdata.txt' file :
+        userdata = UserData()
+        userdata.content['games'] += 1
+        userdata.content['question'] += game_data[0]
+        userdata.content['correct'] += game_data[1]
+        userdata.content['bad'] += game_data[2]
+        userdata.save()
         # Launch frame items :
         self.init_frame_items()
 
